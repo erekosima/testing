@@ -1,8 +1,9 @@
 const mongoose = require ('mongoose')
-const schema = mongoose.Schema
+
+const Schema = mongoose.Schema
+
 const userSchema =new Schema({
 "names" :{
-
     type : String,
     required : true,
 },
@@ -16,6 +17,14 @@ const userSchema =new Schema({
     type : String,
     required : true,
 },
+"phone":{
+    type:Number,
+    required:true
+},
+"created_at":{
+    type:Date,
+    default:Date.now                              
+}
 
 })
 

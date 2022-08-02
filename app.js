@@ -1,9 +1,25 @@
 
-let express = require("express")
-let app = express()
+const express = require("express")
+const app = express()
 
-let cors = require("cors")
+const cors = require("cors")
+const route = require('./api/routes/userRoute')
 
-app.use('/', (req, res) => "Welcome")
+app.use(express.json())
+app.use(express.urlencoded({ extended : true }));
+
+require('./api/db/db').connect()
+
+app.get('/',(req, res)=> {
+    return res.json({
+        status: "sucess",
+        message:"welcome to CRAUDApp"
+    })
+})
+
+app.use(route)
+
+app.use(cors())
+
 
 module.exports = app
